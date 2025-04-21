@@ -5,7 +5,7 @@ const projects = [
   {
     title: "Spotify Clone",
     description: "A clone of the Spotify UI using HTML, CSS, and JavaScript.",
-    link: "https://spotify-clone-three-omega-62.vercel.app/"
+    link: "https://spotify-97o0.onrender.com/"
   },
   {
     title: "Netflix Clone",
