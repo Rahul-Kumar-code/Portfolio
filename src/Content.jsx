@@ -102,7 +102,7 @@ export default function Portfolio() {
       >
         <h2 className="text-2xl sm:text-3xl font-semibold text-blue-400 mb-4">About Me</h2>
         <p className="text-gray-300 max-w-4xl mx-auto text-base sm:text-lg">
-          I'm an enthusiastic IT engineering student and full stack web developer.
+          I'm an enthusiastic IT engineering student, more better projects loading...
         </p>
       </motion.section>
     </main>
