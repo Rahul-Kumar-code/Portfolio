@@ -28,6 +28,11 @@ const projects = [
     link: "https://currency-converter-web-eight.vercel.app/"
   },
   {
+    title: "Qr Generator",
+    description: "A Qr code generator using Api.",
+    link: "https://qr-generator-alpha-three.vercel.app/"
+  },
+  {
     title: "Airbnb Clone",
     description: "A full stack Airbnb clone with backend using Node.js and MongoDB.",
     link: "https://github.com/yourusername/airbnb-clone"
