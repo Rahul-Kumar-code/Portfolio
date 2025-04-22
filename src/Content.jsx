@@ -28,8 +28,8 @@ const projects = [
     link: "https://currency-converter-web-eight.vercel.app/"
   },
   {
-    title: "Qr Generator",
-    description: "A Qr code generator using Api.",
+    title: "Qr Generator & Scanner",
+    description: "A Qr code generator and scanner using Api and ar libraray.",
     link: "https://qr-generator-alpha-three.vercel.app/"
   },
   {
