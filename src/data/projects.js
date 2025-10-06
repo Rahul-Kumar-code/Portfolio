@@ -8,7 +8,8 @@ export const projects = [
       'Full-stack MERN platform with JWT-secured, role-based access, dashboards for attendance trends, and one-click PDF exports.',
     tech: ['MongoDB', 'Express.js', 'React', 'Node.js'],
     category: 'Full Stack',
-    link: 'https://github.com/rahulkumardev/attendify',
+    link: 'https://github.com/abhi1913ek-79ri/Attendify',
+    live: 'https://attendifyattendkarle.vercel.app/'
   },
   {
     id: 'prep-ai',
@@ -17,7 +18,8 @@ export const projects = [
       'AI-assisted interview preparation assistant powered by Gemini API, delivering tailored questions, concept explainers, and progress tracking.',
     tech: ['MERN', 'Gemini API', 'JWT'],
     category: 'AI',
-    link: 'https://github.com/rahulkumardev/prep-ai',
+    link: 'https://github.com/Rahul-Kumar-code/Prep-AI',
+    live: 'https://prep-ai-one-lovat.vercel.app/'
   },
   {
     id: 'homehive',
@@ -26,6 +28,7 @@ export const projects = [
       'MongoDB-backed booking app with Express.js APIs, listing management, and responsive Tailwind UI for browsing, saving, and reserving homes.',
     tech: ['Express.js', 'MongoDB', 'Tailwind CSS'],
     category: 'Web App',
-    link: 'https://github.com/rahulkumardev/homehive',
+    link: 'https://github.com/Rahul-Kumar-code/HomeHive',
+    live: 'https://homehive-1-aguz.onrender.com/',
   },
 ]

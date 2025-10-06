@@ -38,6 +38,8 @@ const contactMethods = [
 export function Contact() {
   return (
     <section id="contact" className="relative px-6 py-24 sm:px-10">
+      <div className="pointer-events-none absolute -top-32 right-8 h-64 w-64 rounded-full bg-gradient-to-br from-[#465def]/40 via-transparent to-accent/35 blur-3xl animate-float" />
+      <div className="pointer-events-none absolute bottom-10 left-6 h-52 w-52 rounded-full bg-gradient-to-tr from-accent/30 via-[#465def]/25 to-transparent blur-3xl animate-float-reverse" />
       <div className="mx-auto flex max-w-6xl flex-col gap-12 lg:flex-row">
         <div className="flex-1 space-y-6">
           <h2 className="section-title">Let&apos;s Build What&apos;s Next</h2>
@@ -50,7 +52,7 @@ export function Contact() {
               const isPhone = method.label === 'Phone'
               const usesGradientIcon = isEmail || isPhone
               return (
-                <motion.a
+              <motion.a
                   key={method.label}
                   href={method.href}
                   whileHover={{ y: -4, scale: 1.02 }}
@@ -98,7 +100,7 @@ export function Contact() {
                 whileHover={{ y: -6, scale: 1.05 }}
                 className="group glass-panel flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/10 p-4 text-sm font-medium text-slate-200 transition"
               >
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20 text-accent transition group-hover:bg-accent group-hover:text-white">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20 text-accent transition group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-accent group-hover:to-[#465def] group-hover:text-slate-950">
                   <social.icon className="text-lg" />
                 </span>
                 {social.label}
@@ -147,16 +149,32 @@ export function Contact() {
               />
             </div>
             <motion.button
-              whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.99 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
               type="submit"
-              className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-accent to-[#465def] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:brightness-110"
+              className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-accent via-[#465def] to-accent bg-[length:200%_auto] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-right"
             >
               Initiate Contact
               <span aria-hidden>⤴</span>
             </motion.button>
           </div>
         </motion.form>
+      </div>
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <motion.span
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.5 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2 }}
+          className="absolute left-1/3 top-12 h-2 w-24 rounded-full bg-gradient-to-r from-accent to-transparent blur-sm"
+        />
+        <motion.span
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.6 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: 0.2 }}
+          className="absolute right-10 bottom-16 h-2 w-20 rounded-full bg-gradient-to-r from-[#465def] to-transparent blur-sm"
+        />
       </div>
     </section>
   )

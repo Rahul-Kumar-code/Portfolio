@@ -119,6 +119,13 @@ export function Header() {
                 className="fixed inset-0 z-30 bg-slate-950/70 backdrop-blur-md md:hidden"
                 onClick={() => setIsMenuOpen(false)}
               />
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="absolute top-4 right-4 z-50 text-white cursor-pointer hover:scale-105 md:hidden"
+                aria-label="Close navigation menu"
+              >
+                <LuX className="w-7 h-7" />
+              </button>
               <motion.nav
                 key="mobile-nav"
                 initial={{ opacity: 0, y: -16 }}

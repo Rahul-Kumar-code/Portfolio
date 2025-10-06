@@ -1,46 +1,23 @@
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { Typewriter } from 'react-simple-typewriter'
 
 const phrases = [
-  'I build dependable MERN stacks that simplify campus life.',
-  'I engineer secure APIs with clean data models and JWT flows.',
-  'I craft AI-assisted products that coach learners with confidence.',
+  'Building with MERN + AI',
+  'Engineering secure APIs',
+  'Designing for speed & empathy',
 ]
 
 const profileImage = '/profilePic.png'
 
 export function Hero() {
-  const [index, setIndex] = useState(0)
-  const [displayed, setDisplayed] = useState('')
-
-  useEffect(() => {
-    const current = phrases[index]
-    setDisplayed('')
-    let i = 0
-    let timeoutId
-    const typeInterval = setInterval(() => {
-      setDisplayed(current.slice(0, i + 1))
-      i += 1
-      if (i === current.length) {
-        clearInterval(typeInterval)
-        timeoutId = setTimeout(() => {
-          setIndex((prev) => (prev + 1) % phrases.length)
-        }, 2500)
-      }
-    }, 50)
-    return () => {
-      clearInterval(typeInterval)
-      if (timeoutId) {
-        clearTimeout(timeoutId)
-      }
-    }
-  }, [index])
-
   return (
     <section
       id="hero"
-      className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 py-8 sm:px-8 md:px-12 lg:py-12"
+      className="relative isolate flex min-h-screen items-center justify-center overflow-hidden px-4 py-8 sm:px-8 md:px-12 lg:py-12 mt-16 md:mt-0"
     >
+      <div className="pointer-events-none absolute -top-32 left-6 h-64 w-64 rounded-full bg-gradient-to-br from-[#465def]/35 via-transparent to-accent/40 blur-3xl animate-float" />
+      <div className="pointer-events-none absolute top-20 right-10 h-48 w-48 rounded-full bg-gradient-to-br from-accent/30 via-[#465def]/30 to-transparent blur-3xl animate-float-slow" />
+      <div className="pointer-events-none absolute -bottom-40 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-[radial-gradient(circle,_rgba(70,93,239,0.35),_rgba(88,255,226,0.18),_transparent_70%)] blur-3xl animate-float-reverse" />
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(120,140,255,0.18),_transparent_50%),radial-gradient(circle_at_bottom,_rgba(88,255,226,0.25),_transparent_50%)]" />
       <motion.div
         initial={{ opacity: 0, y: 60 }}
@@ -67,14 +44,22 @@ export function Hero() {
               Crafting intelligent web experiences with MERN, AI, and secure APIs — built for speed, empathy, and scale.
             </motion.h1>
             <motion.p
-              key={index}
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="mt-8 text-lg font-mono text-accent"
+              className="mt-8 inline-flex items-center justify-center gap-2 font-mono text-sm text-[#465def] sm:text-base lg:justify-start"
             >
-              {displayed}
-              <span className="ml-1 inline-block h-6 w-[3px] animate-pulse rounded-full bg-accent/80 align-middle" />
+              <span className="rounded-full bg-slate-950/70 px-4 py-2 text-[#465def] ring-1 ring-[#465def]/25 shadow-inner">
+                <Typewriter
+                  words={phrases}
+                  loop
+                  cursor={false}
+                  typeSpeed={70}
+                  deleteSpeed={40}
+                  delaySpeed={1800}
+                />
+              </span>
+              <span className="animate-cursor-blink text-lg text-[#465def]">▍</span>
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -84,10 +69,11 @@ export function Hero() {
             >
               <a
                 href="#projects"
-                className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-accent to-[#465def] px-8 py-3 text-sm font-semibold text-white shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:brightness-110"
+                className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-accent via-[#465def] to-accent bg-[length:200%_auto] px-8 py-3 text-sm font-semibold text-slate-950 shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:bg-right hover:brightness-110"
               >
-                <span className='text-black font-bold'>View Projects</span>
+                <span className="font-bold tracking-wide">View Projects</span>
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/20 transition group-hover:rotate-90">→</span>
+                <span className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 transition group-hover:opacity-100" />
               </a>
               <a
                 href="https://drive.google.com/uc?export=download&id=1NiRxUEUecanV75JdzHMtVlg_PXtWFgL7"
@@ -96,7 +82,7 @@ export function Hero() {
                 className="group inline-flex items-center gap-3 rounded-full border border-accent/40 bg-white/10 px-8 py-3 text-sm font-semibold text-accent backdrop-blur-lg transition hover:border-accent hover:brightness-110 hover:shadow-lg"
               >
                 <span>Download Resume</span>
-                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-accent/40 text-xs transition group-hover:bg-accent group-hover:text-white">
+                <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-accent/40 text-xs transition group-hover:translate-x-1 group-hover:bg-accent group-hover:text-white">
                   {`//`}
                 </span>
               </a>
