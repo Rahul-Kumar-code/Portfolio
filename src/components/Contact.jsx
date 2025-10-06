@@ -1,0 +1,163 @@
+import { motion } from 'framer-motion'
+import { SiLeetcode } from 'react-icons/si'
+import { LuGithub, LuLinkedin, LuMail, LuPhone } from 'react-icons/lu'
+
+const socials = [
+  {
+    icon: LuLinkedin,
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/rahul-kumar-84273134a/',
+  },
+  {
+    icon: LuGithub,
+    label: 'GitHub',
+    href: 'https://github.com/Rahul-Kumar-code',
+  },
+  {
+    icon: SiLeetcode,
+    label: 'LeetCode',
+    href: 'https://leetcode.com/u/Rahul_Kumar_codes/',
+  },
+]
+
+const contactMethods = [
+  {
+    icon: LuMail,
+    label: 'Email',
+    value: 'rahul.4316401523@std.ggsipu.ac.in',
+    href: 'mailto:rahul.4316401523@std.ggsipu.ac.in',
+  },
+  {
+    icon: LuPhone,
+    label: 'Phone',
+    value: '+91 81786 82176',
+    href: 'tel:+918178682176',
+  },
+]
+
+export function Contact() {
+  return (
+    <section id="contact" className="relative px-6 py-24 sm:px-10">
+      <div className="mx-auto flex max-w-6xl flex-col gap-12 lg:flex-row">
+        <div className="flex-1 space-y-6">
+          <h2 className="section-title">Let&apos;s Build What&apos;s Next</h2>
+          <p className="section-subtitle">
+            I&apos;m collaborating on MERN, AI, and cloud-ready products. Reach out for internships, freelance web builds, or hackathon teams.
+          </p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {contactMethods.map((method) => {
+              const isEmail = method.label === 'Email'
+              const isPhone = method.label === 'Phone'
+              const usesGradientIcon = isEmail || isPhone
+              return (
+                <motion.a
+                  key={method.label}
+                  href={method.href}
+                  whileHover={{ y: -4, scale: 1.02 }}
+                  className="glass-panel flex items-center gap-4 rounded-2xl border border-white/10 bg-white/10 p-4 text-left text-sm text-slate-200 transition sm:p-5"
+                >
+                  <span
+                    className={`flex flex-none items-center justify-center rounded-full ${
+                      usesGradientIcon
+                        ? 'h-12 w-12 bg-gradient-to-br from-accent to-[#465def] p-[3px] text-white shadow-[0_12px_35px_-20px_rgba(70,93,239,0.8)]'
+                        : 'h-10 w-10 bg-accent/20 text-accent'
+                    }`}
+                  >
+                    <span
+                      className={`flex h-full w-full items-center justify-center rounded-full ${
+                        usesGradientIcon ? 'bg-slate-950/80' : ''
+                      }`}
+                    >
+                      <method.icon className="text-lg" />
+                    </span>
+                  </span>
+                  <span className="flex min-w-0 flex-col gap-1 overflow-hidden">
+                    <span className="block text-xs uppercase tracking-[0.3em] text-accent/80">
+                      {method.label}
+                    </span>
+                    <span
+                      className={`text-sm text-slate-100 ${
+                        isEmail ? 'truncate md:text-base' : 'md:text-base'
+                      }`}
+                      title={isEmail ? method.value : undefined}
+                    >
+                      {method.value}
+                    </span>
+                  </span>
+                </motion.a>
+              )
+            })}
+          </div>
+          <div className="grid grid-cols-3 gap-4">
+            {socials.map((social) => (
+              <motion.a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ y: -6, scale: 1.05 }}
+                className="group glass-panel flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/10 p-4 text-sm font-medium text-slate-200 transition"
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20 text-accent transition group-hover:bg-accent group-hover:text-white">
+                  <social.icon className="text-lg" />
+                </span>
+                {social.label}
+              </motion.a>
+            ))}
+          </div>
+        </div>
+        <motion.form
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6 }}
+          onSubmit={(event) => event.preventDefault()}
+          className="glass-panel flex-1 rounded-3xl border border-white/10 bg-white/10 p-8 backdrop-blur-2xl shadow-[0_30px_80px_-30px_rgba(88,255,226,0.4)]"
+        >
+          <div className="grid gap-6">
+            <div className="grid gap-2">
+              <label htmlFor="name" className="form-label">
+                Name
+              </label>
+              <input id="name" name="name" type="text" required placeholder="Your Name" className="form-input" />
+            </div>
+            <div className="grid gap-2">
+              <label htmlFor="email" className="form-label">
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                placeholder="you@team.com"
+                className="form-input"
+              />
+            </div>
+            <div className="grid gap-2">
+              <label htmlFor="project" className="form-label">
+                Project Vision
+              </label>
+              <textarea
+                id="project"
+                name="project"
+                rows={5}
+                placeholder="Share the problem, timeline, and tech stack you have in mind..."
+                className="form-input resize-none"
+              />
+            </div>
+            <motion.button
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
+              type="submit"
+              className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-accent to-[#465def] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:brightness-110"
+            >
+              Initiate Contact
+              <span aria-hidden>⤴</span>
+            </motion.button>
+          </div>
+        </motion.form>
+      </div>
+    </section>
+  )
+}

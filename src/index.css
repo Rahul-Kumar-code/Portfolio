@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply min-h-screen bg-slate-950 text-slate-100 antialiased;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  background-image: radial-gradient(circle at 20% 20%, rgba(88, 255, 226, 0.06), transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba(88, 111, 255, 0.1), transparent 55%);
+}
+
+::selection {
+  @apply bg-accent/60 text-slate-950;
+}
+
+@layer components {
+  .glass-panel {
+    @apply border border-white/10 bg-white/10 backdrop-blur-2xl;
+  }
+
+  .section-title {
+    @apply text-3xl font-semibold tracking-tight text-white md:text-4xl;
+  }
+
+  .section-subtitle {
+    @apply mt-4 text-sm text-slate-300 md:text-base;
+  }
+
+  .form-label {
+    @apply text-xs font-semibold uppercase tracking-[0.3em] text-slate-400;
+  }
+
+  .form-input {
+    @apply h-12 rounded-2xl border border-white/10 bg-white/10 px-4 text-sm text-slate-100 shadow-inner transition placeholder:text-slate-500 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40;
+  }
+}
