@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { SiLeetcode } from 'react-icons/si'
 import { LuGithub, LuLinkedin, LuMail, LuPhone } from 'react-icons/lu'
@@ -36,6 +37,62 @@ const contactMethods = [
 ]
 
 export function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: '',
+  })
+  const [submitState, setSubmitState] = useState({
+    type: 'idle',
+    message: '',
+  })
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    setFormData((current) => ({
+      ...current,
+      [name]: value,
+    }))
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    setSubmitState({ type: 'loading', message: 'Sending your message...' })
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const payload = await response.json().catch(() => ({}))
+
+      if (!response.ok) {
+        throw new Error(payload.message || 'Unable to send your message right now.')
+      }
+
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+      })
+      setSubmitState({
+        type: 'success',
+        message: payload.message || 'Message sent. I will get back to you soon.',
+      })
+    } catch (error) {
+      setSubmitState({
+        type: 'error',
+        message: error.message,
+      })
+    }
+  }
+
+  const isLoading = submitState.type === 'loading'
+
   return (
     <section id="contact" className="relative px-6 py-24 sm:px-10">
       <div className="pointer-events-none absolute -top-32 right-8 h-64 w-64 rounded-full bg-gradient-to-br from-[#465def]/40 via-transparent to-accent/35 blur-3xl animate-float" />
@@ -100,7 +157,7 @@ export function Contact() {
                 whileHover={{ y: -6, scale: 1.05 }}
                 className="group glass-panel flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-white/10 p-4 text-sm font-medium text-slate-200 transition"
               >
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20 text-accent transition group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-accent group-hover:to-[#465def] group-hover:text-slate-950">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/20 text-white transition group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-accent group-hover:to-[#465def] group-hover:text-slate-950">
                   <social.icon className="text-lg" />
                 </span>
                 {social.label}
@@ -113,7 +170,7 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6 }}
-          onSubmit={(event) => event.preventDefault()}
+          onSubmit={handleSubmit}
           className="glass-panel flex-1 rounded-3xl border border-white/10 bg-white/10 p-8 backdrop-blur-2xl shadow-[0_30px_80px_-30px_rgba(88,255,226,0.4)]"
         >
           <div className="grid gap-6">
@@ -121,7 +178,16 @@ export function Contact() {
               <label htmlFor="name" className="form-label">
                 Name
               </label>
-              <input id="name" name="name" type="text" required placeholder="Your Name" className="form-input" />
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
+                className="form-input"
+              />
             </div>
             <div className="grid gap-2">
               <label htmlFor="email" className="form-label">
@@ -133,28 +199,41 @@ export function Contact() {
                 type="email"
                 required
                 placeholder="you@team.com"
+                value={formData.email}
+                onChange={handleChange}
                 className="form-input"
               />
             </div>
             <div className="grid gap-2">
-              <label htmlFor="project" className="form-label">
+              <label htmlFor="message" className="form-label">
                 Project Vision
               </label>
               <textarea
-                id="project"
-                name="project"
+                id="message"
+                name="message"
                 rows={5}
                 placeholder="Share the problem, timeline, and tech stack you have in mind..."
+                value={formData.message}
+                onChange={handleChange}
                 className="form-input resize-none"
               />
             </div>
+            <motion.p
+              aria-live="polite"
+              initial={false}
+              animate={{ opacity: submitState.message ? 1 : 0, y: submitState.message ? 0 : 6 }}
+              className={`text-sm ${submitState.type === 'error' ? 'text-rose-300' : 'text-emerald-300'}`}
+            >
+              {submitState.message}
+            </motion.p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
               type="submit"
-              className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-accent via-[#465def] to-accent bg-[length:200%_auto] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-right"
+              disabled={isLoading}
+              className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-accent via-[#465def] to-accent bg-[length:200%_auto] px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-right disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Initiate Contact
+              {isLoading ? 'Sending...' : 'Initiate Contact'}
               <span aria-hidden>⤴</span>
             </motion.button>
           </div>

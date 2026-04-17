@@ -26,4 +26,15 @@ export default defineConfig([
   'no-unused-vars': ['error', { varsIgnorePattern: '^(?:[A-Z_].*|motion)$' }],
     },
   },
+  {
+    files: ['server/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.node,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+      },
+    },
+  },
 ])

@@ -17,6 +17,7 @@ Ultra-modern, Web3-inspired portfolio for Rahul Kumar, built with React, Tailwin
 - [Tailwind CSS 3](https://tailwindcss.com/) with custom tokens and component layers
 - [Framer Motion](https://www.framer.com/motion/) for motion choreography
 - [React Icons](https://react-icons.github.io/react-icons/) for vector social glyphs
+- Express + Nodemailer email endpoint for the contact form
 
 ## 🚀 Getting Started
 
@@ -26,10 +27,12 @@ npm run dev
 ```
 
 Visit the printed local URL (default `http://localhost:5173`) to explore the live experience. Press `Ctrl+C` to stop the dev server.
+The `dev` command now starts both the Vite frontend and the local email API on port `3001`.
 
 ## 📦 Available Scripts
 
-- `npm run dev` – Start the Vite development server with HMR.
+- `npm run dev` – Start the Vite frontend and local email API together with HMR.
+- `npm run server` – Start the email API by itself.
 - `npm run build` – Generate an optimized production build.
 - `npm run preview` – Preview the production build locally.
 - `npm run lint` – Run ESLint across the project.
@@ -42,7 +45,25 @@ src/
   data/         Project and skills data objects
   main.jsx      Entry point
   index.css     Tailwind directives and custom utility layers
+server/         Express API that delivers contact form submissions by email
 ```
+
+## 📧 Contact Form Setup
+
+Create a `.env` file with SMTP credentials before using the contact form in a real inbox workflow:
+
+```bash
+PORT=3001
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=your-user@example.com
+SMTP_PASS=your-password
+CONTACT_TO=your-inbox@example.com
+CONTACT_FROM="Rahul Kumar Portfolio <your-user@example.com>"
+```
+
+The form posts to `/api/contact`, which the Vite dev server proxies to the Express mail API during development.
 
 ## 📄 License
 

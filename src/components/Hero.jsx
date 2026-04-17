@@ -69,14 +69,14 @@ export function Hero() {
             >
               <a
                 href="#projects"
-                className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-accent via-[#465def] to-accent bg-[length:200%_auto] px-8 py-3 text-sm font-semibold text-slate-950 shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:bg-right hover:brightness-110"
+                className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-gradient-to-r from-accent via-[#5e6fdc] to-accent bg-[length:200%_auto] px-8 py-3 text-sm font-semibold text-slate-950 shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:bg-right hover:brightness-110"
               >
                 <span className="font-bold tracking-wide">View Projects</span>
                 <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/20 transition group-hover:rotate-90">→</span>
                 <span className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 transition group-hover:opacity-100" />
               </a>
               <a
-                href="https://drive.google.com/uc?export=download&id=1NiRxUEUecanV75JdzHMtVlg_PXtWFgL7"
+                href="https://drive.google.com/file/d/1M1qJWEHmFDZ18WaXrBEeX9SNUWfdjdNe/view?usp=sharing"
                 target="_blank"
                 rel="noreferrer"
                 className="group inline-flex items-center gap-3 rounded-full border border-accent/40 bg-white/10 px-8 py-3 text-sm font-semibold text-accent backdrop-blur-lg transition hover:border-accent hover:brightness-110 hover:shadow-lg"

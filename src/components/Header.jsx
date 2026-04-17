@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { LuMenu, LuX } from 'react-icons/lu'
+import { LuMenu, LuMoonStar, LuSunMedium, LuX } from 'react-icons/lu'
 
 const links = [
   { label: 'Overview', href: '#hero' },
@@ -9,7 +9,7 @@ const links = [
   { label: 'Connect', href: '#contact' },
 ]
 
-export function Header() {
+export function Header({ theme, onToggleTheme }) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -60,35 +60,28 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={onToggleTheme}
+            className="inline-flex h-11 items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 text-xs font-semibold uppercase tracking-[0.28em] text-slate-200 transition hover:border-accent/60 hover:text-accent"
+            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            aria-pressed={theme === 'light'}
+          >
+            {theme === 'dark' ? <LuSunMedium className="text-base" /> : <LuMoonStar className="text-base" />}
+            <span className="hidden sm:inline">{theme === 'dark' ? 'Light' : 'Dark'}</span>
+          </button>
           <a
-            href="https://drive.google.com/file/d/1NiRxUEUecanV75JdzHMtVlg_PXtWFgL7/view?usp=drive_link"
+            href="https://drive.google.com/file/d/1M1qJWEHmFDZ18WaXrBEeX9SNUWfdjdNe/view?usp=sharing"
             target="_blank"
             rel="noreferrer"
             className="group hidden items-center gap-2 rounded-full border border-accent/40 bg-accent/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-accent transition hover:brightness-95 hover:shadow-md md:flex"
           >
-            <span className="relative overflow-hidden">
-              <motion.span
-                initial={{ y: 0 }}
-                whileHover={{ y: -16 }}
-                transition={{ duration: 0.4, type: 'spring' }}
-                className="block"
-              >
-                Resume
-              </motion.span>
-              <motion.span
-                initial={{ y: 16 }}
-                whileHover={{ y: 0 }}
-                transition={{ duration: 0.4, type: 'spring' }}
-                className="block absolute inset-0"
-              >
-                Resume
-              </motion.span>
-            </span>
+            <span>Resume</span>
           </a>
           <button
             type="button"
             onClick={() => setIsMenuOpen((prev) => !prev)}
-            className="relative flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-slate-900/80 text-slate-200 transition hover:border-accent/60 hover:text-accent md:hidden"
+            className="relative flex h-11 w-11 items-center justify-center rounded-full border border-lite/15 bg-slate-900/80 text-slate-200 transition hover:border-accent/60 hover:text-accent md:hidden"
             aria-label="Toggle navigation menu"
             aria-expanded={isMenuOpen}
           >
@@ -110,6 +103,16 @@ export function Header() {
         <AnimatePresence>
           {isMenuOpen && (
             <>
+                <button
+                  type="button"
+                  onClick={onToggleTheme}
+                  className="flex items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 uppercase tracking-[0.3em] text-slate-200 transition hover:border-accent/50 hover:text-accent"
+                  aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                  aria-pressed={theme === 'light'}
+                >
+                  {theme === 'dark' ? <LuSunMedium className="text-base" /> : <LuMoonStar className="text-base" />}
+                  <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+                </button>
               <motion.div
                 key="overlay"
                 initial={{ opacity: 0 }}
@@ -146,7 +149,7 @@ export function Header() {
                   </a>
                 ))}
                 <a
-                  href="https://drive.google.com/file/d/rahul-kumar-resume"
+                  href="https://drive.google.com/file/d/1M1qJWEHmFDZ18WaXrBEeX9SNUWfdjdNe/view?usp=sharing"
                   target="_blank"
                   rel="noreferrer"
                   onClick={handleNavClick}

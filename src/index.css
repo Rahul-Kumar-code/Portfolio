@@ -4,41 +4,288 @@
 
 :root {
   color-scheme: dark;
+  --app-bg: #020617;
+  --app-bg-soft: #0f172a;
+  --app-text: #e2e8f0;
+  --app-text-strong: #ffffff;
+  --app-text-muted: #cbd5e1;
+  --app-text-subtle: #94a3b8;
+  --app-panel: rgba(15, 23, 42, 0.72);
+  --app-panel-strong: rgba(15, 23, 42, 0.88);
+  --app-panel-gradient: linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.72), rgba(15, 23, 42, 0.88));
+  --app-panel-gradient-soft: linear-gradient(135deg, rgba(15, 23, 42, 0.76), rgba(30, 41, 59, 0.54));
+  --app-border: rgba(255, 255, 255, 0.12);
+  --app-accent-soft: rgba(88, 255, 226, 0.12);
+  --app-body-bg:
+    radial-gradient(circle at 20% 20%, rgba(88, 255, 226, 0.06), transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba(88, 111, 255, 0.1), transparent 55%);
+  --app-shell-bg:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 40%),
+    linear-gradient(180deg, rgba(13, 23, 42, 0.65), rgba(13, 23, 42, 0.9));
+  --app-ambient-bg: radial-gradient(ellipse at center, rgba(88, 255, 226, 0.08), transparent 60%);
+}
+
+body.light-theme {
+  color-scheme: light;
+  --app-bg: #ffffff;
+  --app-bg-soft: #f8fafc;
+  --app-text: #334155;
+  --app-text-strong: #0f172a;
+  --app-text-muted: #475569;
+  --app-text-subtle: #64748b;
+  --app-panel: rgba(255, 255, 255, 0.94);
+  --app-panel-strong: rgba(255, 255, 255, 0.99);
+  --app-panel-gradient: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(239, 246, 255, 0.92), rgba(248, 250, 252, 0.98));
+  --app-panel-gradient-soft: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(241, 245, 249, 0.88));
+  --app-border: rgba(148, 163, 184, 0.16);
+  --app-accent-soft: rgba(37, 99, 235, 0.08);
+  --app-body-bg:
+    radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.06), transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba(20, 184, 166, 0.06), transparent 55%);
+  --app-shell-bg:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.98), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 1));
+  --app-ambient-bg: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.07), transparent 60%);
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--app-bg);
 }
 
 body {
-  @apply min-h-screen bg-slate-950 text-slate-100 antialiased;
+  @apply min-h-screen antialiased;
   font-family: 'Space Grotesk', system-ui, sans-serif;
-  background-image: radial-gradient(circle at 20% 20%, rgba(88, 255, 226, 0.06), transparent 45%),
-    radial-gradient(circle at 80% 0%, rgba(88, 111, 255, 0.1), transparent 55%);
+  background-color: var(--app-bg);
+  background-image: var(--app-body-bg);
+  color: var(--app-text);
+  transition: background-color 220ms ease, color 220ms ease, background-image 220ms ease;
 }
 
 ::selection {
   @apply bg-accent/60 text-slate-950;
 }
 
+body.light-theme .app-shell {
+  background-image: var(--app-shell-bg);
+}
+
+.app-shell {
+  background-image: var(--app-shell-bg);
+}
+
+.app-ambient {
+  background-image: var(--app-ambient-bg);
+}
+
 @layer components {
   .glass-panel {
-    @apply border border-white/10 bg-white/10 backdrop-blur-2xl;
+    border-color: var(--app-border);
+    background-color: var(--app-panel);
+    background-image: var(--app-panel-gradient-soft);
+    @apply backdrop-blur-2xl;
   }
 
   .section-title {
-    @apply text-3xl font-semibold tracking-tight text-white md:text-4xl;
+    color: var(--app-text-strong);
+    @apply text-3xl font-semibold tracking-tight md:text-4xl;
   }
 
   .section-subtitle {
-    @apply mt-4 text-sm text-slate-300 md:text-base;
+    color: var(--app-text-muted);
+    @apply mt-4 text-sm md:text-base;
   }
 
   .form-label {
-    @apply text-xs font-semibold uppercase tracking-[0.3em] text-slate-400;
+    color: var(--app-text-subtle);
+    @apply text-xs font-semibold uppercase tracking-[0.3em];
   }
 
   .form-input {
-    @apply h-12 rounded-2xl border border-white/10 bg-white/10 px-4 text-sm text-slate-100 shadow-inner transition placeholder:text-slate-500 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40;
+    border-color: var(--app-border);
+    background-color: var(--app-panel-strong);
+    color: var(--app-text-strong);
+    @apply h-12 rounded-2xl px-4 text-sm shadow-inner transition placeholder:text-slate-500 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40;
   }
+}
+
+body.light-theme .text-white {
+  color: var(--app-text-strong) !important;
+}
+
+body.light-theme .text-slate-100 {
+  color: var(--app-text-strong) !important;
+}
+
+body.light-theme .text-slate-200 {
+  color: #1f2937 !important;
+}
+
+body.light-theme .text-slate-300 {
+  color: var(--app-text) !important;
+}
+
+body.light-theme .text-slate-400 {
+  color: var(--app-text-subtle) !important;
+}
+
+body.light-theme .text-slate-500 {
+  color: #9ca3af !important;
+}
+
+body.light-theme .text-accent,
+body.light-theme .text-accent\/70,
+body.light-theme .text-accent\/80 {
+  color: #2563eb !important;
+}
+
+body.light-theme .bg-accent,
+body.light-theme .bg-accent\/10,
+body.light-theme .bg-accent\/15,
+body.light-theme .bg-accent\/20,
+body.light-theme .bg-accent\/30,
+body.light-theme .bg-accent\/40 {
+  background-color: rgba(37, 99, 235, 0.1) !important;
+}
+
+body.light-theme .border-accent\/30,
+body.light-theme .border-accent\/40,
+body.light-theme .border-accent\/50,
+body.light-theme .border-accent\/60 {
+  border-color: rgba(37, 99, 235, 0.3) !important;
+}
+
+body.light-theme .bg-gradient-to-r.from-accent.via-\[\#465def\].to-accent,
+body.light-theme .bg-gradient-to-br.from-accent.to-\[\#465def\],
+body.light-theme [class*='bg-gradient-to-r'][class*='from-accent'][class*='to-accent'],
+body.light-theme [class*='bg-gradient-to-br'][class*='from-accent'][class*='to-'] {
+  background-image: linear-gradient(135deg, #2563eb, #6366f1, #38bdf8) !important;
+}
+
+body.light-theme [class*='from-\[\#465def\]'] {
+  --tw-gradient-from: #4f46e5 !important;
+}
+
+body.light-theme [class*='to-\[\#465def\]'] {
+  --tw-gradient-to: #6366f1 !important;
+}
+
+body.light-theme .text-\[\#465def\] {
+  color: #2563eb !important;
+}
+
+body.light-theme .text-\[\#465def\]\/70,
+body.light-theme .text-\[\#465def\]\/80 {
+  color: rgba(37, 99, 235, 0.8) !important;
+}
+
+body.light-theme .bg-slate-900\/80,
+body.light-theme .bg-slate-900\/70,
+body.light-theme .bg-slate-950\/95,
+body.light-theme .bg-slate-950\/80,
+body.light-theme .bg-slate-950\/70,
+body.light-theme .bg-slate-950,
+body.light-theme .bg-slate-950\/50,
+body.light-theme .bg-white\/5,
+body.light-theme .bg-white\/10 {
+  background-color: var(--app-panel) !important;
+  background-image: var(--app-panel-gradient-soft) !important;
+}
+
+body.light-theme .bg-white {
+  background-color: #ffffff !important;
+  background-image: var(--app-panel-gradient-soft) !important;
+}
+
+body.light-theme .glass-panel {
+  background-color: var(--app-panel) !important;
+  background-image: var(--app-panel-gradient) !important;
+}
+
+body.light-theme .group:hover .group-hover\:text-accent,
+body.light-theme .hover\:text-accent:hover,
+body.light-theme .hover\:border-accent:hover,
+body.light-theme .hover\:bg-accent:hover {
+  color: #4f46e5 !important;
+  border-color: rgba(79, 70, 229, 0.4) !important;
+}
+
+body.light-theme .bg-gradient-to-r.from-accent.via-\[\#465def\].to-accent,
+body.light-theme .bg-gradient-to-br.from-accent.via-\[\#465def\].to-accent,
+body.light-theme .bg-gradient-to-r.from-accent.to-accent,
+body.light-theme .bg-gradient-to-br.from-accent.to-accent {
+  background-image: linear-gradient(135deg, #4f46e5, #6366f1, #2563eb) !important;
+}
+
+html .glass-panel {
+  background-color: var(--app-panel);
+  background-image: var(--app-panel-gradient-soft);
+}
+
+body.light-theme .border-white\/10,
+body.light-theme .border-white\/15,
+body.light-theme .border-white\/20 {
+  border-color: var(--app-border) !important;
+}
+
+body.light-theme .ring-offset-slate-950,
+body.light-theme .ring-offset-slate-900,
+body.light-theme .ring-offset-slate-800 {
+  --tw-ring-offset-color: #ffffff !important;
+}
+
+body.light-theme .backdrop-blur-xl,
+body.light-theme .backdrop-blur-2xl,
+body.light-theme .backdrop-blur-3xl {
+  backdrop-filter: blur(24px);
+}
+
+body.light-theme #projects .glass-panel,
+body.light-theme #projects .group > .rounded-3xl {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(239, 246, 255, 0.92), rgba(248, 250, 252, 0.98)) !important;
+  border-color: rgba(148, 163, 184, 0.18) !important;
+}
+
+body.light-theme #projects .group:hover > .rounded-3xl {
+  box-shadow: 0 32px 80px -44px rgb(116, 155, 238) !important;
+}
+
+body.light-theme #projects .group:hover .bg-gradient-to-r.from-\[\#465def\]\/35,
+body.light-theme #projects .group:hover .bg-gradient-to-r.from-accent\/35,
+body.light-theme #projects .group:hover .bg-gradient-to-t.from-slate-900\/40 {
+  opacity: 0.85 !important;
+}
+
+body.light-theme #projects button.rounded-full {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border-color: rgba(148, 163, 184, 0.18) !important;
+  color: #334155 !important;
+}
+
+body.light-theme #projects button.rounded-full:hover {
+  background-color: rgba(255, 255, 255, 1) !important;
+  color: #1d4ed8 !important;
+}
+
+body.light-theme #projects button.rounded-full .bg-gradient-to-r.from-accent.via-\[\#465def\].to-accent {
+  background-image: linear-gradient(135deg, #dbeafe, #bfdbfe, #93c5fd) !important;
+}
+
+body.light-theme #projects .rounded-full.border.border-accent\/40,
+body.light-theme #projects .rounded-full.border.border-accent\/40.bg-accent\/10 {
+  background-color: rgba(239, 246, 255, 0.96) !important;
+  border-color: rgba(96, 165, 250, 0.28) !important;
+  color: #1d4ed8 !important;
+}
+
+body.light-theme #projects .rounded-full.border.border-accent\/40:hover,
+body.light-theme #projects .rounded-full.border.border-accent\/40.bg-accent\/10:hover {
+  background-color: rgba(219, 234, 254, 0.98) !important;
+  border-color: rgba(59, 130, 246, 0.45) !important;
+  color: #1e40af !important;
+}
+
+body.light-theme #projects .text-accent {
+  color: #2563eb !important;
 }
