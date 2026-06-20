@@ -25,8 +25,8 @@ const contactMethods = [
   {
     icon: LuMail,
     label: 'Email',
-    value: 'rahul.4316401523@std.ggsipu.ac.in',
-    href: 'mailto:rahul.4316401523@std.ggsipu.ac.in',
+    value: 'rk0505469@gmail.com',
+    href: 'mailto:rk0505469@gmail.com',
   },
   {
     icon: LuPhone,

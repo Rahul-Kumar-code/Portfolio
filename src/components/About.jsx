@@ -68,12 +68,12 @@ export function About() {
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-sm text-slate-300 md:justify-start">
             <motion.a
-              href="mailto:rahul.4316401523@std.ggsipu.ac.in"
+              href="mailto:rk0505469@gmail.com"
               whileHover={{ scale: 1.03, y: -2 }}
               className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 backdrop-blur-xl"
             >
               <span className="h-2 w-2 rounded-full bg-accent" />
-              rahul.4316401523@std.ggsipu.ac.in
+              rk0505469@gmail.com
             </motion.a>
             <motion.a
               href="tel:+918178682176"
