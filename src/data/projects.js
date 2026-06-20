@@ -1,7 +1,17 @@
 export const projectCategories = ['All', 'Full Stack', 'AI', 'Web App']
 
 export const projects = [
-  {
+ {
+  id: 'Compressify',
+  title: 'Compressify — Smart Image Compressor',
+  description:
+    'Client-side image compression tool that reduces image size using quality controls or a target file size. Supports JPG, PNG, and WebP with real-time previews and privacy-focused browser processing.',
+  tech: ['React', 'Vite', 'Tailwind CSS', 'Canvas API'],
+  category: 'Frontend',
+  link: 'https://github.com/Rahul-Kumar-code/compressify',
+  live: 'https://compressify-weld.vercel.app/'
+},
+ {
 id: 'Vyntra',
 title: 'Vyntra — Peer-to-Peer Rental Marketplace',
 description:
