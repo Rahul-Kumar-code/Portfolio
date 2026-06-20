@@ -2,6 +2,17 @@ export const projectCategories = ['All', 'Full Stack', 'AI', 'Web App']
 
 export const projects = [
   {
+id: 'Vyntra',
+title: 'Vyntra — Peer-to-Peer Rental Marketplace',
+description:
+'Full-stack MERN rental platform with secure authentication, Razorpay payments, real-time booking workflows, wallet management, and automated deposit refunds.',
+tech: [ 'Next.js', 'MongoDB', 'Express.js', 'Razorpay'],
+category: 'Full Stack',
+link: 'https://github.com/abhi1913ek-79ri/borrow-box',
+live: 'https://vyntra-sable.vercel.app/'
+},
+
+  {
     id: 'attendify',
     title: 'Attendify — Smart Attendance Tracker',
     description:
