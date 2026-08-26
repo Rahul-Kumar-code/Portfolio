@@ -1,5 +1,63 @@
 import { motion } from 'framer-motion'
+import {
+  SiCss3,
+  SiExpress,
+  SiFramer,
+  SiGit,
+  SiGithub,
+  SiHtml5,
+  SiJavascript,
+  SiMongodb,
+  SiMysql,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiReact,
+  SiTailwindcss,
+  SiVercel,
+} from 'react-icons/si'
+import { LuBrain, LuCode, LuDatabase, LuGitBranch, LuGraduationCap, LuHeartHandshake, LuMessageCircle, LuRefreshCw, LuServer, LuShieldCheck, LuUsers } from 'react-icons/lu'
 import { skillFocus, techStack } from '../data/skills'
+
+const skillIcons = {
+  HTML: SiHtml5,
+  CSS: SiCss3,
+  JavaScript: SiJavascript,
+  'React.js': SiReact,
+  'Next.js': SiNextdotjs,
+  'Node.js': SiNodedotjs,
+  'Express.js': SiExpress,
+  MongoDB: SiMongodb,
+  'Git/GitHub': SiGithub,
+  'VS Code': LuCode,
+  'Data Structures & Algorithms': LuCode,
+  DBMS: LuDatabase,
+  'OOPS with C++': LuCode,
+  'Team Collaboration': LuUsers,
+  'Problem Solving': LuBrain,
+  Communication: LuMessageCircle,
+  'Unit testing': LuShieldCheck,
+  'Version control workflows': LuGitBranch,
+  'Responsive layouts': LuServer,
+  'Tailwind CSS design systems': SiTailwindcss,
+  'User empathy': LuHeartHandshake,
+  'Continuous iteration': LuRefreshCw,
+  'Feedback integration': LuMessageCircle,
+}
+
+const techIcons = {
+  'JavaScript (ES2024)': SiJavascript,
+  'React.js': SiReact,
+  'Next.js': SiNextdotjs,
+  'Node.js': SiNodedotjs,
+  'Express.js': SiExpress,
+  MongoDB: SiMongodb,
+  MySQL: SiMysql,
+  'Tailwind CSS': SiTailwindcss,
+  'Framer Motion': SiFramer,
+  'CI/CD (Vercel)': SiVercel,
+  'Git & GitHub': SiGithub,
+  'VS Code': LuCode,
+}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 36 },
@@ -126,8 +184,13 @@ export function About() {
                 <ul className="mt-3 space-y-2 text-sm text-slate-300">
                   {group.items.map((item) => (
                     <li key={item} className="flex items-start gap-2">
-                      <span className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-accent" />
-                      <span className='text-sm'>{item}</span>
+                      <span className="mt-0.5 flex min-h-6 min-w-6 items-center gap-1 text-accent" aria-hidden="true">
+                        {(() => {
+                          const Icon = skillIcons[item] || LuGraduationCap
+                          return <Icon size={16} />
+                        })()}
+                      </span>
+                      <span className="text-sm leading-6">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -156,8 +219,12 @@ export function About() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: index * 0.04 }}
                 whileHover={{ scale: 1.05 }}
-                className="inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-accent"
+                className="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-accent"
               >
+                {(() => {
+                  const Icon = techIcons[tech] || LuCode
+                  return <Icon size={14} aria-hidden="true" />
+                })()}
                 {tech}
               </motion.span>
             ))}

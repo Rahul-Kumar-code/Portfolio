@@ -76,7 +76,7 @@ export function Hero() {
                 <span className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 transition group-hover:opacity-100" />
               </a>
               <a
-                href="https://drive.google.com/file/d/1M1qJWEHmFDZ18WaXrBEeX9SNUWfdjdNe/view?usp=sharing"
+                href="https://drive.google.com/file/d/1oK9WR5jJavPjlLWvmM19NN5tqn9aEgB4/view?usp=sharing"
                 target="_blank"
                 rel="noreferrer"
                 className="group inline-flex items-center gap-3 rounded-full border border-accent/40 bg-white/10 px-8 py-3 text-sm font-semibold text-accent backdrop-blur-lg transition hover:border-accent hover:brightness-110 hover:shadow-lg"

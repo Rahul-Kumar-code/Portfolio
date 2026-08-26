@@ -1,16 +1,11 @@
 export const skillFocus = [
   {
     label: 'Technical Stack',
-    items: [
-      'HTML, CSS, JavaScript',
-      'React.js, Next.js',
-      'Node.js, Express.js',
-      'MongoDB, Git/GitHub, VS Code',
-    ],
+    items: ['HTML', 'CSS', 'JavaScript', 'React.js', 'Next.js', 'Node.js', 'Express.js', 'MongoDB', 'Git/GitHub', 'VS Code'],
   },
   {
     label: 'CS Fundamentals',
-    items: ['Data Structures & Algorithms', 'DBMS, OOPS with C++'],
+    items: ['Data Structures & Algorithms', 'DBMS', 'OOPS with C++'],
   },
   {
     label: 'Soft Skills',
@@ -18,7 +13,7 @@ export const skillFocus = [
   },
   {
     label: 'Deployment & DevOps',
-    items: ['CI/CD with Vercel', 'Unit testing, Version control workflows'],
+    items: ['Unit testing', 'Version control workflows'],
   },
   {
     label: 'UI Engineering',
