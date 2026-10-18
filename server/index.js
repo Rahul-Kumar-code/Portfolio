@@ -10,7 +10,14 @@ const port = Number(process.env.PORT || 3001)
 
 // ✅ Secure CORS (use your frontend URL from env)
 app.use(cors({
-  origin: process.env.CLIENT_URL,
+  origin: (origin, callback) => {
+    const allowed = process.env.CLIENT_URL
+    // Allow requests with no origin (e.g. curl/Postman) and any localhost in dev
+    if (!origin || origin === allowed || /^http:\/\/localhost(:\d+)?$/.test(origin)) {
+      return callback(null, true)
+    }
+    callback(new Error('Not allowed by CORS'))
+  },
   credentials: true
 }))
 

@@ -60,7 +60,8 @@ export function Contact() {
     setSubmitState({ type: 'loading', message: 'Sending your message...' })
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/contact`, {
+      const apiBase = import.meta.env.VITE_API_URL || ''
+      const response = await fetch(`${apiBase}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
